@@ -28,18 +28,34 @@ app.get('/', function(req, res) {
 app.get('/api', function(req, res) {
 
 	/* Params to translate */
-	var from = req.params['from'];
-	var to = req.params['to'];
+	var from = req.query.from;
+	var to = req.query.to;
+	var word = req.query.word;
 
 	/* Verify the params aren't null */
 	if((from != null && to != null) && (from.length > 0 && to.length > 0)){
 		
 		/* Translate from Spanish */	
 		if(from.toLowerCase() == $PARAM_SPANISH){
+			
+			for(var i = 0; i < db.length; i++){
+			
+				var key = Object.keys(db[i])[0];	
+				var spanish_words = db[i][key];
+				for(var w = 0; w < spanish_words.length; w++){
 
+					var spanish_word = spanish_words[w];
+					if(spanish_word.indexOf(word) > -1){
+						console.log(spanish_words[w] + ' -> ' + key);
+						res.send(key);
+						break;
+					}
+				}
+			}
 		/* Translate from Mapudungun */
 		}else if(from.toLowerCase() == $PARAM_MAPUDUNGUN){
 
+			res.send('from mapudungun');
 		/* Other lenguage return error */
 		}else{
 			/* Return error */
