@@ -4,7 +4,6 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var str2json = require('string-to-json');
 
 /* Consts */
 const $PARAM_SPANISH = 'spanish';
