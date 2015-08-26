@@ -1,6 +1,11 @@
 # mapudungun-backend
 
 Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Nodejs
+Este proyecto está compuesto de tres repositorios
+- Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
+- Mapudungun Web https://github.com/pabloaraya/mapudungun-web
+- Android Client https://github.com/pabloaraya/mapudungun-backend
+- iOS Client https://github.com/pabloaraya/mapudungun-ios
 
 ## Installation
 Para poder ejecutar el proyecto es necesario tener instalado previamente [Nodejs](https://nodejs.org/) y ejectuar el siguiente comando dentro del directorio raíz del proyecto, para así poder instalar las dependencias correspondientes.
