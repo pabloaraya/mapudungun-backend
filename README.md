@@ -9,6 +9,8 @@ Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Node
 ## Installation
 Para poder ejecutar el proyecto es necesario tener instalado previamente [Nodejs](https://nodejs.org/) y ejectuar el siguiente comando dentro del directorio raíz del proyecto, para así poder instalar las dependencias correspondientes.
 ```
+git clone git@github.com:pabloaraya/mapudungun-backend.git
+cd mapudungun-backed
 npm install
 ```
 
@@ -35,3 +37,11 @@ Para probar el servidor podemos ejecutar el siguiente comando.
 ```
 curl 'http://0.0.0.0:3000/api?from=spanish&to=mapudungun&word=niño'
 ```
+
+## License
+Mapudungun-backend is published under the MIT License.
+
+## Contact
+· Pablo Araya
+· pablo.araya.romero@gmail.com
+. @pabloaraya_cl
