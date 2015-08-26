@@ -4,7 +4,7 @@
   "description": "Server of Mapudungun Application",
   "main": "app.js",
   "dependencies": {
-    "express": "4.13.3",
+    "express": "4.13.3"
   },
   "devDependencies": {},
   "scripts": {
