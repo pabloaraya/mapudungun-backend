@@ -1,7 +1,6 @@
 # mapudungun-backend
 
-Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Nodejs
-Este proyecto está compuesto de tres repositorios
+Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Nodejs. Este proyecto está compuesto de tres repositorios:
 - Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
 - Mapudungun Web https://github.com/pabloaraya/mapudungun-web
 - Android Client https://github.com/pabloaraya/mapudungun-backend
@@ -14,12 +13,12 @@ npm install
 ```
 
 ## Usage
-Para iniciar el servidor ejecutamos el siguiente comando
+Para iniciar el servidor ejecutamos el siguiente comando.
 ```
 node app.js
 ```
 
-Vale destacar que el comando puede variar entre *node* y *nodejs* dependiendo del sistema operativo y si se cambia el puerto a 80 se debe anteponer el comando sudo a la sentencia.
+Vale destacar que el comando puede variar entre *node* y *nodejs* dependiendo del sistema operativo y si se cambia el puerto a 80 se debe anteponer el comando *sudo* a la sentencia.
 
 El servicio recibe tres parámetros:
 - from: Idioma de entrada
@@ -32,7 +31,7 @@ Y retorna cuatro parámetros:
 - message: String
 - words: Array (optional)
 
-To test the server we can use the above command
+Para probar el servidor podemos ejecutar el siguiente comando.
 ```
 curl 'http://0.0.0.0:3000/api?from=spanish&to=mapudungun&word=niño'
 ```
