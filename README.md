@@ -3,7 +3,7 @@
 Mapudungun backend es un diccionario Español/Mapudungun expuesto como servicio REST, escrito en javascript y ejecutado en Nodejs. Este proyecto está compuesto por tres repositorios:
 - Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
 - Mapudungun Web https://github.com/pabloaraya/mapudungun-web
-- Android Client https://github.com/pabloaraya/mapudungun-backend
+- Android Client https://github.com/pabloaraya/mapudungun-android
 - iOS Client https://github.com/pabloaraya/mapudungun-ios
 
 ## Installation
