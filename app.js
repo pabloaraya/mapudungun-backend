@@ -101,7 +101,7 @@ app.get('/api', function(req, res) {
 });
 
 /* Starting server */
-var server = app.listen(80, function () {
+var server = app.listen(3000, function () {
 
 	/* Setup server */
 	var host = server.address().address;
