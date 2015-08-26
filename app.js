@@ -9,7 +9,9 @@ var fs = require('fs');
 const $PARAM_SPANISH = 'spanish';
 const $PARAM_MAPUDUNGUN = 'mapudungun';
 const $ERROR_MISS_PARAMS = 'Require from and to parameters';
-const $ERROR_LENGUAGE = 'Just spanish and mapudungun';
+const $ERROR_MISS_WORD = 'Require word to translate';
+const $ERROR_LENGUAGE = 'Only spanish and mapudungun';
+const $ERROR_NO_TRANSLATION = 'No translation';
 
 /* Load words db */
 var db;
@@ -20,7 +22,7 @@ fs.readFile( __dirname + '/db.json', function (err, data) {
 
 /* Route root */
 app.get('/', function(req, res) {
-	res.send('Hello World!');
+	res.redirect('https://github.com/pabloaraya/mapudungun-backend');
 });
 
 /* Route api REST */
@@ -31,38 +33,70 @@ app.get('/api', function(req, res) {
 	var to = req.query.to;
 	var word = req.query.word;
 
+	/* Verify the word to translate */
+	if(word == null){
+		responseError(res, $ERROR_MISS_WORD);
+		return;
+	}
 	/* Verify the params aren't null */
 	if((from != null && to != null) && (from.length > 0 && to.length > 0)){
 		
 		/* Translate from Spanish */	
-		if(from.toLowerCase() == $PARAM_SPANISH){
-			
+		if(from.toLowerCase() == $PARAM_SPANISH && to.toLowerCase() == $PARAM_MAPUDUNGUN){
+
+			/* Loop words */			
 			for(var i = 0; i < db.length; i++){
 			
-				var key = Object.keys(db[i])[0];	
+				/* Get key (mapudungun word) */
+				var key = Object.keys(db[i])[0];
+
+				/* get spanish words */	
 				var spanish_words = db[i][key];
 				for(var w = 0; w < spanish_words.length; w++){
 
+					/* spanish word */
 					var spanish_word = spanish_words[w];
+
+					/* Verify if exits */
 					if(spanish_word.indexOf(word) > -1){
-						console.log(spanish_words[w] + ' -> ' + key);
-						res.send(key);
-						break;
+
+						/* Response the word */
+						responseSuccess(res, key);
+						return;
 					}
 				}
 			}
-		/* Translate from Mapudungun */
-		}else if(from.toLowerCase() == $PARAM_MAPUDUNGUN){
 
-			res.send('from mapudungun');
+			/* Response if can't find the translation */
+			res.status(400).send($ERROR_NO_TRANSLATION);
+
+		/* Translate from Mapudungun */
+		}else if(from.toLowerCase() == $PARAM_MAPUDUNGUN && to.toLowerCase() == $PARAM_SPANISH){
+
+			for(var i = 0; i < db.length; i++){
+	
+				/* Get key (mapudungun word) */
+				var key = Object.keys(db[i])[0];
+
+				/* Verify if exits */
+				if(key.indexOf(word) > -1){
+
+					/* Response words */
+					responseSuccess(res, db[i][key]);
+					return;
+				}
+			}
+
+			/* Response if can't find the translation */
+			responseFail(res, $ERROR_NO_TRANSLATION);
 		/* Other lenguage return error */
 		}else{
 			/* Return error */
-			res.status(400).send($ERROR_LENGUAGE);
+			responseFail(res, $ERROR_LENGUAGE);
 		}
 	}else{
 		/* Return error */
-		res.status(400).send($ERROR_MISS_PARAMS);
+		responseError(res, $ERROR_MISS_PARAMS);
 	}
 });
 
@@ -75,3 +109,33 @@ var server = app.listen(80, function () {
 
 	console.log('Mapudungun app listening at http://%s:%s', host, port);
 });
+
+/* Response success message */
+var responseSuccess = function(context, message){
+	format = {
+		'statusCode': 200,
+		'status'		: 'success',
+		'message'		: message
+	}
+	context.status(200).json(format);
+}
+
+/* Response fail message */
+var responseFail = function(context, message){
+	format = {
+		'statusCode': 200,
+		'status'		: 'fail',
+		'message'		: message
+	}
+	context.status(200).json(format);
+}
+
+/* Response error message */
+var responseError = function(context, message){
+	format = {
+		'statusCode': 400,
+		'status'		: 'error',
+		'message'		: message
+	}
+	context.status(400).json(format);
+}
