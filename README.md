@@ -1,6 +1,6 @@
 # mapudungun-backend
 
-Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Nodejs. Este proyecto está compuesto de tres repositorios:
+Mapudungun backend es un diccionario Español/Mapudungun expuesto como servicio REST, escrito en javascript y ejecutado en Nodejs. Este proyecto está compuesto por tres repositorios:
 - Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
 - Mapudungun Web https://github.com/pabloaraya/mapudungun-web
 - Android Client https://github.com/pabloaraya/mapudungun-backend
@@ -10,11 +10,10 @@ Mapudungun backend es un servidor REST escrito en javascript y ejecutado en Node
 Para poder ejecutar el proyecto es necesario tener instalado previamente [Nodejs](https://nodejs.org/) y ejectuar el siguiente comando dentro del directorio raíz del proyecto, para así poder instalar las dependencias correspondientes.
 ```
 git clone git@github.com:pabloaraya/mapudungun-backend.git
-cd mapudungun-backed
+cd mapudungun-backend
 npm install
 ```
 
-## Usage
 Para iniciar el servidor ejecutamos el siguiente comando.
 ```
 node app.js
@@ -22,6 +21,7 @@ node app.js
 
 Vale destacar que el comando puede variar entre *node* y *nodejs* dependiendo del sistema operativo y si se cambia el puerto a 80 se debe anteponer el comando *sudo* a la sentencia.
 
+# Usage
 El servicio recibe tres parámetros:
 - from: Idioma de entrada
 - to: Idioma de salida
@@ -42,6 +42,7 @@ curl 'http://0.0.0.0:3000/api?from=spanish&to=mapudungun&word=niño'
 Mapudungun-backend is published under the MIT License.
 
 ## Contact
-· Pablo Araya
-· pablo.araya.romero@gmail.com
-. @pabloaraya_cl
+- Pablo Araya
+- pablo.araya.romero@gmail.com
+- @pabloaraya_cl
+- http://pabloaraya.org
