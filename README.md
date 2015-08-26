@@ -44,5 +44,5 @@ Mapudungun-backend is published under the MIT License.
 ## Contact
 - Pablo Araya
 - pablo.araya.romero@gmail.com
-- @pabloaraya_cl
+- [@pabloaraya_cl](https://twitter.com/pabloaraya_cl)
 - http://pabloaraya.org
