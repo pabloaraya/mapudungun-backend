@@ -1,6 +1,6 @@
 # mapudungun-backend
 
-Mapudungun backend is a dictionary that is created as rest service, written in javascript and executed in Nodejs. This project is compound by three repositories.
+Mapudungun backend is a spanish/mapudungun dictionary that is created as rest service, written in javascript and executed in Nodejs. This project is compound by three repositories.
 - Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
 - Mapudungun Web https://github.com/pabloaraya/mapudungun-web
 - Android Client https://github.com/pabloaraya/mapudungun-android
