@@ -21,18 +21,18 @@ node app.js
 It worths mentioning that the command can vary between *node* and *nodejs* depending of the operative system and if the port is changed to 80, you must prepend the "sudo" command at the sentence.
 
 # Usage
-The service recibe three params:
+The service receives three params:
 - from: input lenguage
 - to: output lenguage
 - word: word to translate
 
-And the service return four params:
+And the service returns four params:
 - statusCode: Int
 - status: String
 - message: String
 - words: Array (optional)
 
-To test the server we can to execute the follow command.
+To test the server we can to execute the following command.
 ```
 curl 'http://0.0.0.0:3000/api?from=spanish&to=mapudungun&word=niño'
 ```
