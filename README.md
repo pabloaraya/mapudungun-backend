@@ -1,39 +1,38 @@
 # mapudungun-backend
 
-Mapudungun backend es un diccionario Español/Mapudungun expuesto como servicio REST, escrito en javascript y ejecutado en Nodejs. Este proyecto está compuesto por tres repositorios:
+Mapudungun backend is a dictionary that is created as rest service, written in javascript and executed in Nodejs. This project is compound by three repositories.
 - Mapudungun Backend https://github.com/pabloaraya/mapudungun-backend
 - Mapudungun Web https://github.com/pabloaraya/mapudungun-web
 - Android Client https://github.com/pabloaraya/mapudungun-android
 - iOS Client https://github.com/pabloaraya/mapudungun-ios
 
 ## Installation
-Para poder ejecutar el proyecto es necesario tener instalado previamente [Nodejs](https://nodejs.org/) y ejectuar el siguiente comando dentro del directorio raíz del proyecto, para así poder instalar las dependencias correspondientes.
+Prior to run the proyect it is necessary to have [Nodejs](https://nodejs.org/) installed and execute the following command in the root directory of the proyect, to install the correspondent dependencies.
+
 ```
 git clone git@github.com:pabloaraya/mapudungun-backend.git
 cd mapudungun-backend
 npm install
 ```
-
-Para iniciar el servidor ejecutamos el siguiente comando.
+To start the server we execute the following command.
 ```
 node app.js
 ```
-
-Vale destacar que el comando puede variar entre *node* y *nodejs* dependiendo del sistema operativo y si se cambia el puerto a 80 se debe anteponer el comando *sudo* a la sentencia.
+It worths mentioning that the command can vary between *node* and *nodejs* depending of the operative system and if the port is changed to 80, you must prepend the "sudo" command at the sentence.
 
 # Usage
-El servicio recibe tres parámetros:
-- from: Idioma de entrada
-- to: Idioma de salida
-- word: Palabra a traducir
+The service recibe three params:
+- from: input lenguage
+- to: output lenguage
+- word: word to translate
 
-Y retorna cuatro parámetros:
+And the service return four params:
 - statusCode: Int
 - status: String
 - message: String
 - words: Array (optional)
 
-Para probar el servidor podemos ejecutar el siguiente comando.
+To test the server we can to execute the follow command.
 ```
 curl 'http://0.0.0.0:3000/api?from=spanish&to=mapudungun&word=niño'
 ```
