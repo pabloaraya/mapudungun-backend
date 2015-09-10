@@ -61,7 +61,7 @@ app.get('/api', function(req, res) {
 					if(spanish_word.indexOf(word) > -1){
 
 						/* Response the word */
-						responseSuccess(res, JSON.parse("[" + key + "]"));
+						responseSuccess(res, [key]);
 						return;
 					}
 				}
@@ -82,7 +82,7 @@ app.get('/api', function(req, res) {
 				if(key.indexOf(word) > -1){
 
 					/* Response words */
-					responseSuccess(res, JSON.parse("[" + db[i][key] + "]"));
+					responseSuccess(res, [db[i][key]]);
 					return;
 				}
 			}
