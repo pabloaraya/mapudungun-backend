@@ -61,7 +61,7 @@ app.get('/api', function(req, res) {
 					if(spanish_word.indexOf(word) > -1){
 
 						/* Response the word */
-						responseSuccess(res, key);
+						responseSuccess(res, JSON.parse("[" + key + "]"));
 						return;
 					}
 				}
