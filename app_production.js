@@ -82,7 +82,7 @@ app.get('/api', function(req, res) {
 				if(key.indexOf(word) > -1){
 
 					/* Response words */
-					responseSuccess(res, db[i][key]);
+					responseSuccess(res, JSON.parse("[" + db[i][key] + "]"));
 					return;
 				}
 			}
