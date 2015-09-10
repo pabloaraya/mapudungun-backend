@@ -4,7 +4,8 @@
   "description": "Server of Mapudungun Application",
   "main": "app.js",
   "dependencies": {
-    "express": "4.13.3"
+    "express": "4.13.3",
+		"neo4j": "2.1.5"
   },
   "devDependencies": {},
   "scripts": {
