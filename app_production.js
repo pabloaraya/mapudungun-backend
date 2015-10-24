@@ -115,7 +115,7 @@ var responseSuccess = function(context, message){
 	format = {
 		'statusCode': 200,
 		'status'		: 'success',
-		'message'		: message
+		'words'		: message
 	}
 	context.status(200).json(format);
 }

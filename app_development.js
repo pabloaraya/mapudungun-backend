@@ -4,7 +4,6 @@
 var express = require('express');
 var neo4j = require('neo4j');
 var app = express();
-var fs = require('fs');
 
 /* Include routes */
 var relationship = require('./routes/relationship.js');
@@ -19,24 +18,15 @@ const $ERROR_MISS_WORD = 'Require word to translate';
 const $ERROR_LENGUAGE = 'Only spanish and mapudungun';
 const $ERROR_NO_TRANSLATION = 'No translation';
 
-/* Load words db */
-var db;
-fs.readFile( __dirname + '/db.json', function (err, data) {
-	db = JSON.parse(data.toString());
-	console.log(db.length + ' words in the db.');
-});
-
-/* Neo4j connection */
-var graph = new neo4j.GraphDatabase('http://localhost:7474');
-
 /* Routes */
-app.get('/node/create/spanish/all', node.createMapudungun);
-app.get('/node/create/mapudungun/all', node.createSpanish);
+app.get('/node/create/mapudungun/all', node.createMapudungun);
+app.get('/node/create/all', node.createAll);
 app.get('/node/delete/all', node.deleteAll);
 app.get('/node/count', node.count);
 
 app.get('/relationship/create/all', relationship.createAll);
 app.get('/relationship/delete/all', relationship.deleteAll);
+app.get('/relationship/count', relationship.count);
 
 /* Route root */
 app.get('/', web.index);
@@ -49,7 +39,6 @@ app.get('/api', function(req, res) {
 	var to = req.query.to;
 	var word = req.query.word;
 
-	console.log(req.query);
 	/* Verify the word to translate */
 	if(word == null){
 		responseError(res, $ERROR_MISS_WORD);

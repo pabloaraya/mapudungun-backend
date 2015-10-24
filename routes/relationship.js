@@ -1,4 +1,14 @@
-var db2 = require('neo4j');
+/* Neo4j connection */
+var neo4j = require('neo4j');
+var graph = new neo4j.GraphDatabase('http://localhost:7474');
+
+/* Load words db */
+var fs = require('fs');
+var db; 
+fs.readFile( __dirname + '/../db.json', function (err, data) {
+	db = JSON.parse(data.toString());
+});
+
 exports.createAll = function(req, res){
 	for(var i=0;i<db.length;i++){
 		var key = Object.keys(db[i])[0];
@@ -9,19 +19,20 @@ exports.createAll = function(req, res){
 			'and n.word="'+key+'" ' +
 			'and m.word="'+values[x]+'" ' +
 			'create (n)-[:MEANS {value:1}]->(m)';
-			db2.cypher({query: query}, function (err, results) {
+			graph.cypher({query: query}, function (err, results) {
 				if(err == null){
-					res.sendStatus(200);
+					console.log(results);
 				}else{
-					res.sendStatus(400);
+					console.log(err);
 				}
 			});
 		}
 	}
+	res.sendStatus(200);
 };
 
 exports.deleteAll = function(req, res){
-	db2.cypher({query: "start r=relationship(*) delete r"}, function(err, results){
+	graph.cypher({query: "start r=relationship(*) delete r"}, function(err, results){
 		if(err == null){
 			res.sendStatus(200);
 		}else{
